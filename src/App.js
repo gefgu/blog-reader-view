@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import AuthenticationPage from "./components/AuthenticationPage";
 import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
 import PostPage from "./components/PostPage";
@@ -12,7 +13,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/:postId" element={<PostPage />} />
+          <Route path="/login" element={<AuthenticationPage />} />
+          <Route path="/signup" element={<AuthenticationPage />} />
+          <Route path="post/:postId" element={<PostPage />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
