@@ -6,7 +6,7 @@ import Nav from "../styled-components/Nav";
 function Navbar() {
   const Flex = styled.div`
     display: flex;
-    gap: 8px;
+    gap: 16px;
   `;
 
   return (
