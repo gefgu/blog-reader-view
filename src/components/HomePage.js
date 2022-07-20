@@ -10,7 +10,9 @@ function HomePage() {
         <Subtitle className="text-3xl">Thougths, stories and ideas.</Subtitle>
       </header>
       <div className="flex flex-col max-w-2xl mx-auto">
+        <hr />
         <PostPreview />
+        <hr />
       </div>
     </div>
   );
