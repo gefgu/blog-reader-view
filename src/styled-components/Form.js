@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Form = styled.form`
-  max-width: 768px;
+  max-width: ${(props) => props.theme.maxWidth};
   margin: 48px auto;
 `;
 

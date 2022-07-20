@@ -1,3 +1,4 @@
+import ContentContainer from "../styled-components/ContentContainer";
 import Header from "../styled-components/Header";
 import OuterWrapper from "../styled-components/OuterWrapper";
 import Subtitle from "../styled-components/Subtitle";
@@ -35,7 +36,7 @@ function HomePage() {
         <Title>Attila</Title>
         <Subtitle>Thougths, stories and ideas.</Subtitle>
       </Header>
-      <div className="flex flex-col max-w-2xl mx-auto">
+      <ContentContainer>
         <hr />
         {posts.map((post) => {
           return (
@@ -46,7 +47,7 @@ function HomePage() {
           );
         })}
         <hr />
-      </div>
+      </ContentContainer>
     </OuterWrapper>
   );
 }

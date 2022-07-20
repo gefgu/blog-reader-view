@@ -1,3 +1,4 @@
+import ContentContainer from "../styled-components/ContentContainer";
 import Header from "../styled-components/Header";
 import OuterWrapper from "../styled-components/OuterWrapper";
 import Paragraph from "../styled-components/Paragraph";
@@ -23,9 +24,9 @@ function PostPage() {
         </Subtitle>
       </Header>
 
-      <div className="max-w-3xl mx-auto">
+      <ContentContainer>
         <Paragraph>{post.content}</Paragraph>
-      </div>
+      </ContentContainer>
       <CommentForm />
     </OuterWrapper>
   );
