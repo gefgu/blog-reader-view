@@ -9,21 +9,21 @@ import PostPreview from "./PostPreview";
 function HomePage() {
   const posts = [
     {
-      title: "Welcome to Ghost",
+      title: "Welcome to Blog",
       author: "Corban",
       date: "30 Dec 2020",
       content:
         "Welcome, it's great to have you here. We know that first impressions are important, so we've populated your new site with some initial getting started posts that will help you get familiar with everything in no time…",
     },
     {
-      title: "Welcome to Ghost #2",
+      title: "Welcome to Blog #2",
       author: "Corban",
       date: "30 Dec 2020",
       content:
         "Welcome, it's great to have you here. We know that first impressions are important, so we've populated your new site with some initial getting started posts that will help you get familiar with everything in no time…",
     },
     {
-      title: "Welcome to Ghost #3",
+      title: "Welcome to Blog #3",
       author: "Corban",
       date: "30 Dec 2020",
       content:
@@ -34,7 +34,7 @@ function HomePage() {
   return (
     <OuterWrapper>
       <Header>
-        <Title>Attila</Title>
+        <Title>Blog</Title>
         <Subtitle>Thougths, stories and ideas.</Subtitle>
       </Header>
       <ContentContainer>

@@ -8,7 +8,7 @@ import CommentForm from "./CommentForm";
 
 function PostPage() {
   const post = {
-    title: "Welcome to Ghost",
+    title: "Welcome to Blog",
     author: "Corban",
     date: "30 Dec 2020",
     content:
