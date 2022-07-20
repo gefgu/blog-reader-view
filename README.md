@@ -6,3 +6,4 @@
   * Git Hub page with log in and sign up buttons in image: https://github.com/zutrinken/attila
 * Primary Font: "Fira Sans"
 * Secondary Font: "Libre Baskerville"
+* Use of Styled Components
