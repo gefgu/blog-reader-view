@@ -13,8 +13,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<AuthenticationPage />} />
-          <Route path="/signup" element={<AuthenticationPage />} />
+          <Route path="/login" element={<AuthenticationPage isLogIn={true} />} />
+          <Route path="/signup" element={<AuthenticationPage isLogIn={false} />} />
           <Route path="post/:postId" element={<PostPage />} />
         </Routes>
       </BrowserRouter>

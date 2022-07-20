@@ -13,8 +13,12 @@ function Navbar() {
     <Nav>
       <Anchor href="/">Home</Anchor>
       <Flex>
-        <Button>Log In</Button>
-        <Button>Sign Up</Button>
+        <Anchor href="/login">
+          <Button>Log In</Button>
+        </Anchor>
+        <Anchor href="/signup">
+          <Button>Sign Up</Button>
+        </Anchor>
       </Flex>
     </Nav>
   );

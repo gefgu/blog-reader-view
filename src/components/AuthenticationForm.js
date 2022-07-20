@@ -3,13 +3,13 @@ import Form from "../styled-components/Form";
 import Heading from "../styled-components/Heading";
 import Input from "../styled-components/Input";
 
-function AuthenticationForm() {
+function AuthenticationForm({isLogIn}) {
   return (
     <Form>
-      <Heading>Log In</Heading>
+      <Heading>{isLogIn ? "Log In" : "Sign Up"}</Heading>
       <Input placeholder="Username" name="username" />
       <Input placeholder="password" name="password" type="password" />
-      <Button>Log In</Button>
+      <Button>{isLogIn ? "Log In" : "Sign Up"}</Button>
     </Form>
   );
 }
