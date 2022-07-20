@@ -1,6 +1,7 @@
 import Paragraph from "../styled-components/Paragraph";
 import Subtitle from "../styled-components/Subtitle";
 import Title from "../styled-components/Title";
+import CommentForm from "./CommentForm";
 
 function PostPage() {
   const post = {
@@ -22,6 +23,7 @@ function PostPage() {
       <div className="max-w-3xl mx-auto">
         <Paragraph>{post.content}</Paragraph>
       </div>
+      <CommentForm />
     </div>
   );
 }
