@@ -1,5 +1,5 @@
 const theme = {
-  primaryFont: "sans-serif",
+  primaryFont: `'Fira Sans', sans-serif`,
 };
 
 export default theme;
