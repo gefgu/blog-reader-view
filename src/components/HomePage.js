@@ -29,9 +29,9 @@ function HomePage() {
 
   return (
     <div className="px-6">
-      <header className="flex flex-col gap-0 items-center my-24">
-        <Title className="text-6xl mb-2">Attila</Title>
-        <Subtitle className="text-3xl">Thougths, stories and ideas.</Subtitle>
+      <header className="flex flex-col gap-2 items-center my-24">
+        <Title>Attila</Title>
+        <Subtitle>Thougths, stories and ideas.</Subtitle>
       </header>
       <div className="flex flex-col max-w-2xl mx-auto">
         <hr />
