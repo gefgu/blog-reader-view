@@ -5,6 +5,7 @@ const Subtitle = styled.h1`
   line-height: 1.5;
   color: ${(props) => props.theme.secondaryColor};
   font-family: ${(props) => props.theme.secondaryFont};
+  margin: 0;
 `;
 
 export default Subtitle;

@@ -1,3 +1,4 @@
+import Header from "../styled-components/Header";
 import Paragraph from "../styled-components/Paragraph";
 import Subtitle from "../styled-components/Subtitle";
 import Title from "../styled-components/Title";
@@ -14,12 +15,13 @@ function PostPage() {
 
   return (
     <div className="px-6">
-      <header className="flex flex-col gap-2 items-center my-24">
+      <Header>
         <Title>{post.title}</Title>
         <Subtitle>
           By {post.author} on {post.date}
         </Subtitle>
-      </header>
+      </Header>
+
       <div className="max-w-3xl mx-auto">
         <Paragraph>{post.content}</Paragraph>
       </div>

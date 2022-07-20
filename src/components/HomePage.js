@@ -1,3 +1,4 @@
+import Header from "../styled-components/Header";
 import Subtitle from "../styled-components/Subtitle";
 import Title from "../styled-components/Title";
 import PostPreview from "./PostPreview";
@@ -29,10 +30,10 @@ function HomePage() {
 
   return (
     <div className="px-6">
-      <header className="flex flex-col gap-2 items-center my-24">
+      <Header>
         <Title>Attila</Title>
         <Subtitle>Thougths, stories and ideas.</Subtitle>
-      </header>
+      </Header>
       <div className="flex flex-col max-w-2xl mx-auto">
         <hr />
         {posts.map((post) => {
