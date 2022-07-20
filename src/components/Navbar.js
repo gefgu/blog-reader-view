@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Anchor from "../styled-components/Anchor";
 import Button from "../styled-components/Button";
 import Nav from "../styled-components/Nav";
 
@@ -10,7 +11,7 @@ function Navbar() {
 
   return (
     <Nav>
-      <a href="/">Home</a>
+      <Anchor href="/">Home</Anchor>
       <Flex>
         <Button>Log In</Button>
         <Button>Sign Up</Button>
