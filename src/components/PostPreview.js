@@ -1,10 +1,11 @@
+import ContentContainer from "../styled-components/ContentContainer";
 import Heading from "../styled-components/Heading";
 import Paragraph from "../styled-components/Paragraph";
 import SubHeading from "../styled-components/SubHeading";
 
 function PostPreview({ post }) {
   return (
-    <div className="my-8">
+    <ContentContainer>
       <Heading>{post.title}</Heading>
       <SubHeading>
         By {post.author} on {post.date}
@@ -15,7 +16,7 @@ function PostPreview({ post }) {
         started posts that will help you get familiar with everything in no
         time.…
       </Paragraph>
-    </div>
+    </ContentContainer>
   );
 }
 

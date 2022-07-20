@@ -4,7 +4,7 @@ const ContentContainer = styled.article`
   max-width: ${(props) => props.theme.maxWidth};
   display: flex;
   flex-direction: column;
-  margin: auto;
+  margin: 48px auto;
 `;
 
 export default ContentContainer;

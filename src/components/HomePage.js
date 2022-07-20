@@ -47,7 +47,6 @@ function HomePage() {
             </>
           );
         })}
-        <Divider />
       </ContentContainer>
     </OuterWrapper>
   );
