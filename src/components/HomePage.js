@@ -1,4 +1,5 @@
 import ContentContainer from "../styled-components/ContentContainer";
+import Divider from "../styled-components/Divider";
 import Header from "../styled-components/Header";
 import OuterWrapper from "../styled-components/OuterWrapper";
 import Subtitle from "../styled-components/Subtitle";
@@ -37,16 +38,16 @@ function HomePage() {
         <Subtitle>Thougths, stories and ideas.</Subtitle>
       </Header>
       <ContentContainer>
-        <hr />
+        <Divider />
         {posts.map((post) => {
           return (
             <>
               <PostPreview post={post} />
-              <hr />
+              <Divider />
             </>
           );
         })}
-        <hr />
+        <Divider />
       </ContentContainer>
     </OuterWrapper>
   );
