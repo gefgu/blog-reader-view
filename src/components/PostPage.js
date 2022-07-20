@@ -1,4 +1,5 @@
 import Header from "../styled-components/Header";
+import OuterWrapper from "../styled-components/OuterWrapper";
 import Paragraph from "../styled-components/Paragraph";
 import Subtitle from "../styled-components/Subtitle";
 import Title from "../styled-components/Title";
@@ -14,7 +15,7 @@ function PostPage() {
   };
 
   return (
-    <div className="px-6">
+    <OuterWrapper>
       <Header>
         <Title>{post.title}</Title>
         <Subtitle>
@@ -26,7 +27,7 @@ function PostPage() {
         <Paragraph>{post.content}</Paragraph>
       </div>
       <CommentForm />
-    </div>
+    </OuterWrapper>
   );
 }
 

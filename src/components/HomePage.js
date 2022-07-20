@@ -1,4 +1,5 @@
 import Header from "../styled-components/Header";
+import OuterWrapper from "../styled-components/OuterWrapper";
 import Subtitle from "../styled-components/Subtitle";
 import Title from "../styled-components/Title";
 import PostPreview from "./PostPreview";
@@ -29,7 +30,7 @@ function HomePage() {
   ];
 
   return (
-    <div className="px-6">
+    <OuterWrapper>
       <Header>
         <Title>Attila</Title>
         <Subtitle>Thougths, stories and ideas.</Subtitle>
@@ -46,7 +47,7 @@ function HomePage() {
         })}
         <hr />
       </div>
-    </div>
+    </OuterWrapper>
   );
 }
 
