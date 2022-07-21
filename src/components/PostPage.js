@@ -13,6 +13,7 @@ import CommentForm from "./CommentForm";
 function PostPage() {
   const postId = useParams().postId;
   const [post, setPost] = useState();
+  const [comments, setComments] = useState();
 
   const getPost = async () => {
     const response = await fetch(
@@ -23,6 +24,21 @@ function PostPage() {
     data.date = data.publishedDate || data.creationDate;
     data.date = DateTime.fromISO(data.date).toLocaleString(DateTime.DATE_MED);
     data.author = data.author.username;
+    return data;
+  };
+
+  const getComments = async () => {
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/posts/${postId}/comments`
+    );
+    let data = await response.json();
+
+    data = data.map((item) => {
+      item.date = item.publishedDate || item.creationDate;
+      item.date = DateTime.fromISO(item.date).toLocaleString(DateTime.DATE_MED);
+      item.author = item.author.username;
+      return item;
+    });
 
     console.log(data);
     return data;
@@ -30,33 +46,8 @@ function PostPage() {
 
   useEffect(() => {
     getPost().then((data) => setPost(data));
+    getComments().then((data) => setComments(data));
   }, []);
-
-  // const post = {
-  //   title: "Welcome to Blog",
-  //   author: "Corban",
-  //   date: "30 Dec 2020",
-  //   content:
-  //     "Welcome, it's great to have you here. We know that first impressions are important, so we've populated your new site with some initial getting started posts that will help you get familiar with everything in no time…",
-  // };
-
-  const comments = [
-    {
-      content: "Fun!",
-      date: "30 Dec 2020",
-      author: "john",
-    },
-    {
-      content: "Awesome!",
-      date: "30 Dec 2020",
-      author: "john",
-    },
-    {
-      content: "Great!",
-      date: "30 Dec 2020",
-      author: "john",
-    },
-  ];
 
   return (
     <OuterWrapper>
@@ -78,7 +69,7 @@ function PostPage() {
 
       <CommentForm />
 
-      {comments.map((comment, index) => (
+      {comments && comments.map((comment, index) => (
         <CommentBox comment={comment} key={index} />
       ))}
     </OuterWrapper>
