@@ -19,17 +19,17 @@ function PostPage() {
   const comments = [
     {
       content: "Fun!",
-      creationDate: "30 Dec 2020",
+      date: "30 Dec 2020",
       author: "john",
     },
     {
       content: "Awesome!",
-      creationDate: "30 Dec 2020",
+      date: "30 Dec 2020",
       author: "john",
     },
     {
       content: "Great!",
-      creationDate: "30 Dec 2020",
+      date: "30 Dec 2020",
       author: "john",
     },
   ];
