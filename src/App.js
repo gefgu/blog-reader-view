@@ -41,7 +41,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Navbar />
+        <Navbar user={user}/>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
