@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../styled-components/Button";
 import Form from "../styled-components/Form";
 import Heading from "../styled-components/Heading";
@@ -6,6 +7,8 @@ import Input from "../styled-components/Input";
 import Paragraph from "../styled-components/Paragraph";
 
 function AuthenticationForm({ isLogIn, setToken }) {
+  let navigate = useNavigate();
+
   const usernameInput = useRef(null);
   const passwordInput = useRef(null);
 
@@ -30,6 +33,7 @@ function AuthenticationForm({ isLogIn, setToken }) {
       setErrorMessage("Wrong Password or Username.");
     } else {
       setToken(data.token);
+      navigate("/")
     }
   };
 
