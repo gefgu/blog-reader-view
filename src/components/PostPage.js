@@ -40,7 +40,6 @@ function PostPage() {
       return item;
     });
 
-    console.log(data);
     return data;
   };
 

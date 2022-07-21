@@ -9,8 +9,6 @@ import Title from "../styled-components/Title";
 import PostPreview from "./PostPreview";
 
 function HomePage() {
-  console.log(process.env.REACT_APP_API_URL);
-
   const [posts, setPosts] = useState();
 
   const getPosts = async () => {
@@ -25,7 +23,6 @@ function HomePage() {
       newItem.author = newItem.author.username;
       return newItem;
     });
-    console.log(data);
     return data;
   };
 
