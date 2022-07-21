@@ -1,14 +1,9 @@
-import styled from "styled-components";
 import Anchor from "../styled-components/Anchor";
 import Button from "../styled-components/Button";
+import Flex from "../styled-components/Flex";
 import Nav from "../styled-components/Nav";
 
 function Navbar() {
-  const Flex = styled.div`
-    display: flex;
-    gap: 16px;
-  `;
-
   return (
     <Nav>
       <Anchor href="/">Home</Anchor>

@@ -1,3 +1,6 @@
+import { DateTime } from "luxon";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ContentContainer from "../styled-components/ContentContainer";
 import Header from "../styled-components/Header";
 import OuterWrapper from "../styled-components/OuterWrapper";
@@ -8,13 +11,39 @@ import CommentBox from "./CommentBox";
 import CommentForm from "./CommentForm";
 
 function PostPage() {
-  const post = {
-    title: "Welcome to Blog",
-    author: "Corban",
-    date: "30 Dec 2020",
-    content:
-      "Welcome, it's great to have you here. We know that first impressions are important, so we've populated your new site with some initial getting started posts that will help you get familiar with everything in no time…",
+  const postId = useParams().postId;
+  const [post, setPost] = useState();
+
+  const getPost = async () => {
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/posts/${postId}`
+    );
+    let data = await response.json();
+
+    data = data.map((item) => {
+      let newItem = item;
+      newItem.date = newItem.publishedDate || newItem.creationDate;
+      newItem.date = DateTime.fromISO(newItem.date).toLocaleString(
+        DateTime.DATE_MED
+      );
+      newItem.author = newItem.author.username;
+      return newItem;
+    });
+    console.log(data);
+    return data;
   };
+
+  useEffect(() => {
+    getPost().then((data) => setPost(data));
+  }, []);
+
+  // const post = {
+  //   title: "Welcome to Blog",
+  //   author: "Corban",
+  //   date: "30 Dec 2020",
+  //   content:
+  //     "Welcome, it's great to have you here. We know that first impressions are important, so we've populated your new site with some initial getting started posts that will help you get familiar with everything in no time…",
+  // };
 
   const comments = [
     {
@@ -37,15 +66,16 @@ function PostPage() {
   return (
     <OuterWrapper>
       <Header>
-        <Title>{post.title}</Title>
+        <Title>{post && post.title}</Title>
         <Subtitle>
-          By {post.author} on {post.date}
+          By {post && post.author} on {post && post.date}
         </Subtitle>
       </Header>
 
       <ContentContainer>
-        <Paragraph>{post.content}</Paragraph>
+        <Paragraph>{post && post.content}</Paragraph>
       </ContentContainer>
+
       <CommentForm />
 
       {comments.map((comment) => (
