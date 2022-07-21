@@ -9,6 +9,20 @@ import theme from "./styled-components/theme";
 
 function App() {
   const [token, setToken] = useState(null);
+  const [user, setUser] = useState(null);
+
+  const getUser = async (token) => {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.status === 401) {
+      return;
+    }
+    let data = await response.json();
+    return data;
+  };
 
   useEffect(() => {
     if (token === null) {
@@ -17,6 +31,12 @@ function App() {
     }
     localStorage.setItem("token", JSON.stringify(token));
   }, [token]);
+
+  useEffect(() => {
+    getUser(JSON.parse(localStorage.getItem("token"))).then((data) =>
+      setUser(data)
+    );
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
