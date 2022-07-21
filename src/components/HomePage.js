@@ -19,9 +19,9 @@ function HomePage() {
     data = data.map((item) => {
       let newItem = item;
       newItem.date = newItem.publishedDate || newItem.creationDate;
-      newItem.date = DateTime.fromISO(
-        newItem.date
-      ).toLocaleString(DateTime.DATE_MED);
+      newItem.date = DateTime.fromISO(newItem.date).toLocaleString(
+        DateTime.DATE_MED
+      );
       newItem.author = newItem.author.username;
       return newItem;
     });
@@ -40,14 +40,14 @@ function HomePage() {
         <Subtitle>Thougths, stories and ideas.</Subtitle>
       </Header>
       <ContentContainer>
-        <Divider />
+        <Divider/>
         {posts &&
           posts.map((post) => {
             return (
-              <>
+              <div key={post._id}>
                 <PostPreview post={post} />
                 <Divider />
-              </>
+              </div>
             );
           })}
       </ContentContainer>
