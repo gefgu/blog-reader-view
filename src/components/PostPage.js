@@ -29,6 +29,8 @@ function PostPage() {
       </ContentContainer>
       <CommentForm />
     </OuterWrapper>
+
+    // Build dummy comments
   );
 }
 

@@ -4,9 +4,9 @@ const theme = {
   primaryColor: `#000000`,
   secondaryColor: `#73777D`,
   maxWidth: `768px`,
-  primaryBackgrond: `rgb(249, 250, 251)`,
-  secondaryBackgrond: `rgb(243, 244, 246)`,
-  terciaryBackgrond: `rgb(229, 231, 235)`,
+  primaryBackground: `rgb(249, 250, 251)`,
+  secondaryBackground: `rgb(243, 244, 246)`,
+  terciaryBackground: `rgb(229, 231, 235)`,
 };
 
 export default theme;
