@@ -1,3 +1,4 @@
+import Anchor from "../styled-components/Anchor";
 import ContentContainer from "../styled-components/ContentContainer";
 import Heading from "../styled-components/Heading";
 import Paragraph from "../styled-components/Paragraph";
@@ -8,7 +9,9 @@ function PostPreview({ post }) {
 
   return (
     <ContentContainer>
-      <Heading>{post.title}</Heading>
+      <Anchor href={`/posts/${post._id}`}>
+        <Heading> {post.title}</Heading>
+      </Anchor>
       <SubHeading>
         By {post.author} on {post.date}
       </SubHeading>
