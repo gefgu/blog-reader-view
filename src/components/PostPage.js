@@ -46,6 +46,11 @@ function PostPage() {
   useEffect(() => {
     getPost().then((data) => setPost(data));
     getComments().then((data) => setComments(data));
+
+    return () => {
+      setPost(null);
+      setComments(null);
+    };
   }, []);
 
   return (
@@ -68,9 +73,10 @@ function PostPage() {
 
       <CommentForm />
 
-      {comments && comments.map((comment, index) => (
-        <CommentBox comment={comment} key={index} />
-      ))}
+      {comments &&
+        comments.map((comment, index) => (
+          <CommentBox comment={comment} key={index} />
+        ))}
     </OuterWrapper>
 
     // Build dummy comments

@@ -28,6 +28,8 @@ function HomePage() {
 
   useEffect(() => {
     getPosts().then((data) => setPosts(data));
+
+    return () => setPosts(null);
   }, []);
 
   return (
@@ -37,7 +39,7 @@ function HomePage() {
         <Subtitle>Thougths, stories and ideas.</Subtitle>
       </Header>
       <ContentContainer>
-        <Divider/>
+        <Divider />
         {posts &&
           posts.map((post) => {
             return (
