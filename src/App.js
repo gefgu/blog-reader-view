@@ -35,6 +35,7 @@ function App() {
       return;
     }
     localStorage.setItem("token", JSON.stringify(token));
+    getUser(token).then((data) => setUser(data));
   }, [token]);
 
   useEffect(() => {

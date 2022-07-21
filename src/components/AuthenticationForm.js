@@ -17,7 +17,6 @@ function AuthenticationForm({ isLogIn, setToken }) {
       username: usernameInput.current.value,
       password: passwordInput.current.value,
     };
-    console.log(jsonBody);
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}/users/login`,
       {
@@ -27,7 +26,6 @@ function AuthenticationForm({ isLogIn, setToken }) {
       }
     );
     const data = await response.json();
-    console.log(data);
     if (!data?.token) {
       setErrorMessage("Wrong Password or Username.");
     } else {
