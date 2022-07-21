@@ -5,7 +5,7 @@ import Heading from "../styled-components/Heading";
 import Input from "../styled-components/Input";
 import Paragraph from "../styled-components/Paragraph";
 
-function AuthenticationForm({ isLogIn }) {
+function AuthenticationForm({ isLogIn, setToken }) {
   const usernameInput = useRef(null);
   const passwordInput = useRef(null);
 
@@ -29,7 +29,9 @@ function AuthenticationForm({ isLogIn }) {
     const data = await response.json();
     console.log(data);
     if (!data?.token) {
-      setErrorMessage("Wrong Password or Username.")
+      setErrorMessage("Wrong Password or Username.");
+    } else {
+      setToken(data.token);
     }
   };
 
