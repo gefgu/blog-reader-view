@@ -4,6 +4,7 @@ import OuterWrapper from "../styled-components/OuterWrapper";
 import Paragraph from "../styled-components/Paragraph";
 import Subtitle from "../styled-components/Subtitle";
 import Title from "../styled-components/Title";
+import CommentBox from "./CommentBox";
 import CommentForm from "./CommentForm";
 
 function PostPage() {
@@ -14,6 +15,24 @@ function PostPage() {
     content:
       "Welcome, it's great to have you here. We know that first impressions are important, so we've populated your new site with some initial getting started posts that will help you get familiar with everything in no time…",
   };
+
+  const comments = [
+    {
+      content: "Fun!",
+      creationDate: "30 Dec 2020",
+      author: "john",
+    },
+    {
+      content: "Awesome!",
+      creationDate: "30 Dec 2020",
+      author: "john",
+    },
+    {
+      content: "Great!",
+      creationDate: "30 Dec 2020",
+      author: "john",
+    },
+  ];
 
   return (
     <OuterWrapper>
@@ -28,6 +47,10 @@ function PostPage() {
         <Paragraph>{post.content}</Paragraph>
       </ContentContainer>
       <CommentForm />
+
+      {comments.map((comment) => (
+        <CommentBox comment={comment} />
+      ))}
     </OuterWrapper>
 
     // Build dummy comments
