@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
 import ContentContainer from "../styled-components/ContentContainer";
 import Divider from "../styled-components/Divider";
@@ -10,39 +11,27 @@ import PostPreview from "./PostPreview";
 function HomePage() {
   console.log(process.env.REACT_APP_API_URL);
 
-  const [posts, setPosts] = useState([
-    {
-      title: "Welcome to Blog",
-      author: "Corban",
-      date: "30 Dec 2020",
-      content:
-        "Welcome, it's great to have you here. We know that first impressions are important, so we've populated your new site with some initial getting started posts that will help you get familiar with everything in no time…",
-    },
-    {
-      title: "Welcome to Blog #2",
-      author: "Corban",
-      date: "30 Dec 2020",
-      content:
-        "Welcome, it's great to have you here. We know that first impressions are important, so we've populated your new site with some initial getting started posts that will help you get familiar with everything in no time…",
-    },
-    {
-      title: "Welcome to Blog #3",
-      author: "Corban",
-      date: "30 Dec 2020",
-      content:
-        "Welcome, it's great to have you here. We know that first impressions are important, so we've populated your new site with some initial getting started posts that will help you get familiar with everything in no time…",
-    },
-  ]);
+  const [posts, setPosts] = useState();
 
   const getPosts = async () => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`);
-    const data = await response.json();
+    let data = await response.json();
+    data = data.map((item) => {
+      let newItem = item;
+      newItem.date = newItem.publishedDate || newItem.creationDate;
+      newItem.date = DateTime.fromISO(
+        newItem.date
+      ).toLocaleString(DateTime.DATE_MED);
+      newItem.author = newItem.author.username;
+      return newItem;
+    });
     console.log(data);
+    return data;
   };
 
   useEffect(() => {
-    getPosts();
-  });
+    getPosts().then((data) => setPosts(data));
+  }, []);
 
   return (
     <OuterWrapper>
@@ -52,14 +41,15 @@ function HomePage() {
       </Header>
       <ContentContainer>
         <Divider />
-        {posts.map((post, index) => {
-          return (
-            <>
-              <PostPreview post={post} />
-              <Divider />
-            </>
-          );
-        })}
+        {posts &&
+          posts.map((post) => {
+            return (
+              <>
+                <PostPreview post={post} />
+                <Divider />
+              </>
+            );
+          })}
       </ContentContainer>
     </OuterWrapper>
   );
