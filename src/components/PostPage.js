@@ -20,15 +20,10 @@ function PostPage() {
     );
     let data = await response.json();
 
-    data = data.map((item) => {
-      let newItem = item;
-      newItem.date = newItem.publishedDate || newItem.creationDate;
-      newItem.date = DateTime.fromISO(newItem.date).toLocaleString(
-        DateTime.DATE_MED
-      );
-      newItem.author = newItem.author.username;
-      return newItem;
-    });
+    data.date = data.publishedDate || data.creationDate;
+    data.date = DateTime.fromISO(data.date).toLocaleString(DateTime.DATE_MED);
+    data.author = data.author.username;
+
     console.log(data);
     return data;
   };
@@ -73,13 +68,18 @@ function PostPage() {
       </Header>
 
       <ContentContainer>
-        <Paragraph>{post && post.content}</Paragraph>
+        {post &&
+          post.content
+            .split("\n")
+            .map((paragraph, index) => (
+              <Paragraph key={index}>{paragraph}</Paragraph>
+            ))}
       </ContentContainer>
 
       <CommentForm />
 
-      {comments.map((comment) => (
-        <CommentBox comment={comment} />
+      {comments.map((comment, index) => (
+        <CommentBox comment={comment} key={index} />
       ))}
     </OuterWrapper>
 
