@@ -2,13 +2,17 @@ import Anchor from "../styled-components/Anchor";
 import Button from "../styled-components/Button";
 import Flex from "../styled-components/Flex";
 import Nav from "../styled-components/Nav";
+import SubHeading from "../styled-components/SubHeading";
 
-function Navbar({ user }) {
+function Navbar({ user, logOut }) {
   return (
     <Nav>
       <Anchor href="/">Home</Anchor>
       {user ? (
-        user.username
+        <Flex>
+          <SubHeading>{user.username}</SubHeading>
+          <Button onClick={logOut}>Log Out</Button>
+        </Flex>
       ) : (
         <Flex>
           <Anchor href="/login">

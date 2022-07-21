@@ -24,6 +24,11 @@ function App() {
     return data;
   };
 
+  const logOut = async () => {
+    localStorage.clear();
+    setUser(null);
+  };
+
   useEffect(() => {
     if (token === null) {
       setToken(JSON.parse(localStorage.getItem("token")));
@@ -41,7 +46,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Navbar user={user}/>
+        <Navbar user={user} logOut={logOut} />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
