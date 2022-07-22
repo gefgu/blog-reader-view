@@ -1,11 +1,13 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Button from "../styled-components/Button";
 import Form from "../styled-components/Form";
 import Heading from "../styled-components/Heading";
 import Input from "../styled-components/Input";
+import Paragraph from "../styled-components/Paragraph";
 
 function CommentForm({ token, postId, updateComments }) {
   const commentInput = useRef(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,11 +23,18 @@ function CommentForm({ token, postId, updateComments }) {
         body: JSON.stringify(content),
       }
     );
+
+    if (response.status === 401) {
+      setErrorMessage("You must log-in to add comment.");
+      return;
+    }
+
     const data = await response.json();
     if (!data.errors) {
       // Successful creation of comment
       updateComments();
       commentInput.current.value = "";
+      setErrorMessage(null);
     }
   };
 
@@ -34,6 +43,7 @@ function CommentForm({ token, postId, updateComments }) {
       <Heading>Add comment</Heading>
       <Input placeholder="Comment" ref={commentInput} name="content" />
       <Button>Add</Button>
+      {errorMessage && <Paragraph>{errorMessage}</Paragraph>}
     </Form>
   );
 }
