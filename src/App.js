@@ -6,7 +6,8 @@ import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
 import PostPage from "./components/PostPage";
 import { AuthContext } from "./contexts/AuthContext";
-import theme from "./styled-components/theme";
+import darkTheme from "./styles/darkTheme";
+import lightTheme from "./styles/lightTheme";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -52,7 +53,7 @@ function App() {
 
   return (
     <AuthContext.Provider value={{ user, token }}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={darkTheme}>
         <Navbar logOut={logOut} />
         <BrowserRouter>
           <Routes>
