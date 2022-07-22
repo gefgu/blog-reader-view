@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import AuthenticationPage from "./components/AuthenticationPage";
 import HomePage from "./components/HomePage";
@@ -58,7 +58,7 @@ function App() {
             path="/signup"
             element={<AuthenticationPage isLogIn={false} setToken={setToken} />}
           />
-          <Route path="posts/:postId" element={<PostPage />} />
+          <Route path="posts/:postId" element={<PostPage token={token} />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
