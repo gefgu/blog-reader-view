@@ -1,3 +1,4 @@
+import { hashSync } from "bcryptjs";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../styled-components/Button";
@@ -33,12 +34,33 @@ function AuthenticationForm({ isLogIn, setToken }) {
       setErrorMessage("Wrong Password or Username.");
     } else {
       setToken(data.token);
-      navigate("/")
+      navigate("/");
+    }
+  };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+
+    const jsonBody = {
+      username: usernameInput.current.value,
+      password: hashSync(passwordInput.current.value, 10),
+    };
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/users/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(jsonBody),
+    });
+    const data = await response.json();
+    console.log(data);
+    if (data?.errors) {
+      setErrorMessage(data.errors[0].msg);
+    } else {
+      handleLogin(e);
     }
   };
 
   return (
-    <Form onSubmit={handleLogin}>
+    <Form onSubmit={isLogIn ? handleLogin : handleSignUp}>
       <Heading>{isLogIn ? "Log In" : "Sign Up"}</Heading>
       <Input placeholder="Username" name="username" ref={usernameInput} />
       <Input
