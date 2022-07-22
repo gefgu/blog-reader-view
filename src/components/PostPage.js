@@ -33,6 +33,8 @@ function PostPage({ token }) {
     );
     let data = await response.json();
 
+    data.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
+
     data = data.map((item) => {
       item.date = item.publishedDate || item.creationDate;
       item.date = DateTime.fromISO(item.date).toLocaleString(DateTime.DATE_MED);
