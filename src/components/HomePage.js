@@ -14,6 +14,9 @@ function HomePage() {
   const getPosts = async () => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`);
     let data = await response.json();
+
+    data.sort((a, b) => new Date(b?.publishedDate || b.creationDate) - new Date(a?.publishedDate || a.creationDate));
+
     data = data.map((item) => {
       let newItem = item;
       newItem.date = newItem.publishedDate || newItem.creationDate;
