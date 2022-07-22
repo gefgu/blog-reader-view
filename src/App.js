@@ -5,6 +5,7 @@ import AuthenticationPage from "./components/AuthenticationPage";
 import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
 import PostPage from "./components/PostPage";
+import { AuthContext } from "./contexts/AuthContext";
 import theme from "./styled-components/theme";
 
 function App() {
@@ -46,23 +47,29 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Navbar user={user} logOut={logOut} />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/login"
-            element={<AuthenticationPage isLogIn={true} setToken={setToken} />}
-          />
-          <Route
-            path="/signup"
-            element={<AuthenticationPage isLogIn={false} setToken={setToken} />}
-          />
-          <Route path="posts/:postId" element={<PostPage token={token} />} />
-        </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+    <AuthContext.Provider value={{ user, token }}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Navbar user={user} logOut={logOut} />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/login"
+              element={
+                <AuthenticationPage isLogIn={true} setToken={setToken} />
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <AuthenticationPage isLogIn={false} setToken={setToken} />
+              }
+            />
+            <Route path="posts/:postId" element={<PostPage token={token} />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
+    </AuthContext.Provider>
   );
 }
 
