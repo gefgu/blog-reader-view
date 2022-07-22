@@ -43,7 +43,7 @@ function CommentForm({ token, postId, updateComments }) {
       <Heading>Add comment</Heading>
       <Input placeholder="Comment" ref={commentInput} name="content" />
       <Button>Add</Button>
-      {errorMessage && <Paragraph>{errorMessage}</Paragraph>}
+      {errorMessage && <Paragraph errorMessage>{errorMessage}</Paragraph>}
     </Form>
   );
 }

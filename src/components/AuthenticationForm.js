@@ -34,6 +34,7 @@ function AuthenticationForm({ isLogIn, setToken }) {
       setErrorMessage("Wrong Password or Username.");
     } else {
       setToken(data.token);
+      setErrorMessage(null);
       navigate("/");
     }
   };
@@ -70,7 +71,7 @@ function AuthenticationForm({ isLogIn, setToken }) {
         type="password"
       />
       <Button>{isLogIn ? "Log In" : "Sign Up"}</Button>
-      {errorMessage && <Paragraph>{errorMessage}</Paragraph>}
+      {errorMessage && <Paragraph errorMessage>{errorMessage}</Paragraph>}
     </Form>
   );
 }
