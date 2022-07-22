@@ -27,6 +27,7 @@ function App() {
   const logOut = async () => {
     localStorage.clear();
     setUser(null);
+    setToken(null);
   };
 
   useEffect(() => {
