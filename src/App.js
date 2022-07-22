@@ -13,6 +13,7 @@ import lightTheme from "./styles/lightTheme";
 function App() {
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const getUser = async (token) => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
@@ -54,10 +55,10 @@ function App() {
 
   return (
     <AuthContext.Provider value={{ user, token }}>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         <BrowserRouter>
           <Background>
-            <Navbar logOut={logOut} />
+            <Navbar logOut={logOut} isDarkTheme={isDarkTheme} setIsDarkTheme={setIsDarkTheme}/>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route
