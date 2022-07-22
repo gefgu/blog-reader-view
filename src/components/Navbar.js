@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import Anchor from "../styled-components/Anchor";
 import Button from "../styled-components/Button";
@@ -11,7 +12,9 @@ function Navbar({ logOut, isDarkTheme, setIsDarkTheme }) {
 
   return (
     <Nav>
-      <Anchor href="/">Home</Anchor>
+      <Anchor>
+        <Link to="/">Home</Link>
+      </Anchor>
       <Button onClick={(e) => setIsDarkTheme(!isDarkTheme)}>
         {isDarkTheme ? "Light Theme" : "Dark Theme"}
       </Button>
@@ -22,11 +25,15 @@ function Navbar({ logOut, isDarkTheme, setIsDarkTheme }) {
         </Flex>
       ) : (
         <Flex>
-          <Anchor href="/login">
-            <Button>Log In</Button>
+          <Anchor>
+            <Link to="/login">
+              <Button>Log In</Button>
+            </Link>
           </Anchor>
-          <Anchor href="/signup">
-            <Button>Sign Up</Button>
+          <Anchor >
+            <Link to="/signup">
+              <Button>Sign Up</Button>
+            </Link>
           </Anchor>
         </Flex>
       )}
