@@ -81,7 +81,7 @@ function PostPage() {
 
       {comments &&
         comments.map((comment, index) => (
-          <CommentBox comment={comment} key={index} />
+          <CommentBox comment={comment} key={index} postId={postId} updateComments={updateComments} />
         ))}
     </OuterWrapper>
   );
