@@ -6,6 +6,7 @@ import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
 import PostPage from "./components/PostPage";
 import { AuthContext } from "./contexts/AuthContext";
+import Background from "./styled-components/Background";
 import darkTheme from "./styles/darkTheme";
 import lightTheme from "./styles/lightTheme";
 
@@ -54,24 +55,29 @@ function App() {
   return (
     <AuthContext.Provider value={{ user, token }}>
       <ThemeProvider theme={darkTheme}>
-        <Navbar logOut={logOut} />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route
-              path="/login"
-              element={
-                <AuthenticationPage isLogIn={true} setToken={setToken} />
-              }
-            />
-            <Route
-              path="/signup"
-              element={
-                <AuthenticationPage isLogIn={false} setToken={setToken} />
-              }
-            />
-            <Route path="posts/:postId" element={<PostPage token={token} />} />
-          </Routes>
+          <Background>
+            <Navbar logOut={logOut} />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route
+                path="/login"
+                element={
+                  <AuthenticationPage isLogIn={true} setToken={setToken} />
+                }
+              />
+              <Route
+                path="/signup"
+                element={
+                  <AuthenticationPage isLogIn={false} setToken={setToken} />
+                }
+              />
+              <Route
+                path="posts/:postId"
+                element={<PostPage token={token} />}
+              />
+            </Routes>
+          </Background>
         </BrowserRouter>
       </ThemeProvider>
     </AuthContext.Provider>

@@ -1,9 +1,9 @@
 const darkTheme = {
   primaryFont: `'Fira Sans', sans-serif`,
   secondaryFont: `'Libre Baskerville', serif`,
-  backgroundColor: `#ffffff`,
+  backgroundColor: `#222426`,
   primaryColor: `#ffffff`,
-  secondaryColor: `#73777D`,
+  secondaryColor: `#909499`,
   maxWidth: `768px`,
   primaryBackground: `rgb(249, 250, 251)`,
   secondaryBackground: `rgb(243, 244, 246)`,
