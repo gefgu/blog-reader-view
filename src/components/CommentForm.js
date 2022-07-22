@@ -1,13 +1,16 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 import Button from "../styled-components/Button";
 import Form from "../styled-components/Form";
 import Heading from "../styled-components/Heading";
 import Input from "../styled-components/Input";
 import Paragraph from "../styled-components/Paragraph";
 
-function CommentForm({ token, postId, updateComments }) {
+function CommentForm({ postId, updateComments }) {
   const commentInput = useRef(null);
   const [errorMessage, setErrorMessage] = useState(null);
+
+  const { token } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

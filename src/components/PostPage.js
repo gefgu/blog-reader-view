@@ -10,7 +10,7 @@ import Title from "../styled-components/Title";
 import CommentBox from "./CommentBox";
 import CommentForm from "./CommentForm";
 
-function PostPage({ token }) {
+function PostPage() {
   const postId = useParams().postId;
   const [post, setPost] = useState();
   const [comments, setComments] = useState();
@@ -77,11 +77,7 @@ function PostPage({ token }) {
             ))}
       </ContentContainer>
 
-      <CommentForm
-        token={token}
-        postId={postId}
-        updateComments={updateComments}
-      />
+      <CommentForm postId={postId} updateComments={updateComments} />
 
       {comments &&
         comments.map((comment, index) => (
