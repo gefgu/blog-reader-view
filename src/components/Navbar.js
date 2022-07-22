@@ -1,10 +1,14 @@
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 import Anchor from "../styled-components/Anchor";
 import Button from "../styled-components/Button";
 import Flex from "../styled-components/Flex";
 import Nav from "../styled-components/Nav";
 import SubHeading from "../styled-components/SubHeading";
 
-function Navbar({ user, logOut }) {
+function Navbar({ logOut }) {
+  const { user } = useContext(AuthContext);
+
   return (
     <Nav>
       <Anchor href="/">Home</Anchor>

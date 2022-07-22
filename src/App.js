@@ -36,21 +36,25 @@ function App() {
       setToken(JSON.parse(localStorage.getItem("token")));
       return;
     }
-    localStorage.setItem("token", JSON.stringify(token));
-    getUser(token).then((data) => setUser(data));
+    if (JSON.parse(localStorage.getItem("token")) !== token) {
+      localStorage.setItem("token", JSON.stringify(token));
+      getUser(token).then((data) => setUser(data));
+    }
   }, [token]);
 
   useEffect(() => {
-    getUser(JSON.parse(localStorage.getItem("token"))).then((data) =>
-      setUser(data)
-    );
+    if (!user) {
+      getUser(JSON.parse(localStorage.getItem("token"))).then((data) =>
+        setUser(data)
+      );
+    }
   }, []);
 
   return (
     <AuthContext.Provider value={{ user, token }}>
       <ThemeProvider theme={theme}>
+        <Navbar logOut={logOut} />
         <BrowserRouter>
-          <Navbar user={user} logOut={logOut} />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route
