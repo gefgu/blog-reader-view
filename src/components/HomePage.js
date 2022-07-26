@@ -12,10 +12,16 @@ function HomePage() {
   const [posts, setPosts] = useState();
 
   const getPosts = async () => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`);
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/posts/published`
+    );
     let data = await response.json();
 
-    data.sort((a, b) => new Date(b?.publishedDate || b.creationDate) - new Date(a?.publishedDate || a.creationDate));
+    data.sort(
+      (a, b) =>
+        new Date(b?.publishedDate || b.creationDate) -
+        new Date(a?.publishedDate || a.creationDate)
+    );
 
     data = data.map((item) => {
       let newItem = item;
