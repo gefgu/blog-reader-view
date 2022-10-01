@@ -11,6 +11,6 @@
 
 ## Related Repositories
 
-[Author's view](https://github.com/gefgu/blog-author-view)
-[Reader's view](https://github.com/gefgu/blog-reader-view)
-[Back-End](https://github.com/gefgu/blog-back-end)
+* [Author's view](https://github.com/gefgu/blog-author-view)  
+* [Reader's view](https://github.com/gefgu/blog-reader-view)  
+* [Back-End](https://github.com/gefgu/blog-back-end)
